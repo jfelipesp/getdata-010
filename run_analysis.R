@@ -24,7 +24,7 @@ if(FALSE %in% FILE_STATUSES) {
   rm(TRAIN_SUBJECTS_FILE,TRAIN_LABELS_FILE,TRAIN_DATA_FILE)
   rm(TEST_SUBJECTS_FILE,TEST_LABELS_FILE,TEST_DATA_FILE)
   rm(FILE_STATUSES)
-  stop("One or more needed file is missing \n Please, make sure to download the zip at \n https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip \n and expanded it in the same location as this file \n Then run me again :)")
+  stop("One or more needed file is missing \n Please, make sure to download the zip at \n https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip \n and expanded it in the working directory \n Then run me again :)")
 }
 # read features file
 features_list <- read.table(FEATURES_FILE)
