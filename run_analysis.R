@@ -81,9 +81,10 @@ filtered_data <- cbind(merged_subject,merged_labels,filtered_data)
 # removing unnecessary data from memory
 rm(activity_label,merged_subject,merged_labels,activity_labels)
 # flushing it out
-write.table(filtered_data, "merged_data.txt",row.name=FALSE)
+write.table(filtered_data, "filtered_data.txt",row.name=FALSE)
 avgs <- c()
 for (i in 1:length(columns)){ avgs <- c(avgs, paste("AVG(",columns[i],")",sep=""))}
 
 vars_avg_groupedby_subject_activity <- sqldf(paste("select Subject,Activity,",paste(avgs,collapse = ",")," from filtered_data group by Subject,Activity",sep=""))
 write.table(vars_avg_groupedby_subject_activity, "vars_avg_groupedby_subject_activity.txt",row.name=FALSE)
+rm(avgs,columns,i)
