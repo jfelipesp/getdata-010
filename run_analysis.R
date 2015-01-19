@@ -85,6 +85,6 @@ write.table(data, "data.txt",row.name=FALSE)
 avgs <- c()
 for (i in 1:length(columns)){ avgs <- c(avgs, paste("AVG(",columns[i],")",sep=""))}
 
-vars_avg_groupedby_subject_activity <- sqldf(paste("select Subject,Activity,",paste(avgs,collapse = ",")," from data group by Subject,Activity",sep=""))
-write.table(vars_avg_groupedby_subject_activity, "vars_avg_groupedby_subject_activity.txt",row.name=FALSE)
+features_avg_groupedby_subject_activity <- sqldf(paste("select Subject,Activity,",paste(avgs,collapse = ",")," from data group by Subject,Activity",sep=""))
+write.table(features_avg_groupedby_subject_activity, "features_avg_groupedby_subject_activity.txt",row.name=FALSE)
 rm(avgs,columns,i)
