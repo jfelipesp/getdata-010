@@ -52,13 +52,13 @@ colnames(merged_data)<- features_list[,2]
 # finding which data "columns" have mean and std vars
 meanStd_cols <- grep("mean\\(\\)|std\\(\\)", features_list[, 2])
 # filtering out unwanted columns 
-filtered_data <- merged_data[,meanStd_cols]
+data <- merged_data[,meanStd_cols]
 # improving readability on column names - Capitalizing mean, std to Mean, Std
-colnames(filtered_data) <- gsub("mean", "Mean", colnames(filtered_data))
-colnames(filtered_data) <- gsub("std", "Std", colnames(filtered_data))
+colnames(data) <- gsub("mean", "Mean", colnames(data))
+colnames(data) <- gsub("std", "Std", colnames(data))
 # improving readability on column names - striping out "()" and "-"
-colnames(filtered_data) <- gsub("\\(\\)", "", colnames(filtered_data)) 
-colnames(filtered_data) <- gsub("-", "", colnames(filtered_data))
+colnames(data) <- gsub("\\(\\)", "", colnames(data)) 
+colnames(data) <- gsub("-", "", colnames(data))
 # removing unnecessary data from memory
 rm(merged_data,features_list,meanStd_cols)
 # naming columns
@@ -75,16 +75,16 @@ activity_label <- activity_labels[merged_labels[, 1], 2]
 #replacing IDs for their description
 merged_labels[,1] <- activity_label
 #fetching data col names for future usage
-columns <- colnames(filtered_data)
+columns <- colnames(data)
 # putting the whole thing in one place (subjects, activies and measurements)
-filtered_data <- cbind(merged_subject,merged_labels,filtered_data)
+data <- cbind(merged_subject,merged_labels,data)
 # removing unnecessary data from memory
 rm(activity_label,merged_subject,merged_labels,activity_labels)
 # flushing it out
-write.table(filtered_data, "filtered_data.txt",row.name=FALSE)
+write.table(data, "data.txt",row.name=FALSE)
 avgs <- c()
 for (i in 1:length(columns)){ avgs <- c(avgs, paste("AVG(",columns[i],")",sep=""))}
 
-vars_avg_groupedby_subject_activity <- sqldf(paste("select Subject,Activity,",paste(avgs,collapse = ",")," from filtered_data group by Subject,Activity",sep=""))
+vars_avg_groupedby_subject_activity <- sqldf(paste("select Subject,Activity,",paste(avgs,collapse = ",")," from data group by Subject,Activity",sep=""))
 write.table(vars_avg_groupedby_subject_activity, "vars_avg_groupedby_subject_activity.txt",row.name=FALSE)
 rm(avgs,columns,i)
