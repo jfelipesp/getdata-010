@@ -80,8 +80,6 @@ columns <- colnames(data)
 data <- cbind(merged_subject,merged_labels,data)
 # removing unnecessary data from memory
 rm(activity_label,merged_subject,merged_labels,activity_labels)
-# flushing it out
-write.table(data, "data.txt",row.name=FALSE)
 avgs <- c()
 for (i in 1:length(columns)){ avgs <- c(avgs, paste("AVG(",columns[i],") ",columns[i],"Avg",sep=""))}
 

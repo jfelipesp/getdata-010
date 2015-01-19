@@ -12,6 +12,5 @@ Here are the steps to properly execute run_analysis.R script.
 	- Rename original columns to improve readability
 	- Put data scattered throught out downloaded files into a single data table.
 * 7 - and provide the following:
-  - data.txt : Means and Standards Deviations from all subjects's activities features observations.
   - features_avg_groupedby_subject_activity.txt : data containing the average measurement of Means and Standard Deviation grouped by Subject and Activity.
 * 8 - Resulting data tables, data(10299 observations of 68 variables) and features_avg_groupedby_subject_activity(180 observations of 68 variables), will remain in memory for further usage if necessary.
