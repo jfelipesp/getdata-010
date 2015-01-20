@@ -2,12 +2,11 @@ Getting and Cleaning Data Peer Assesment Project Codebook
 #########################################################
 
 # About the Raw Data
-The raw data used is this project was collect by Smartlab - Non Linear Complex Systems Laboratory. More information can be found at: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-and can be downloade here: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+The raw data used is this project was collect by Smartlab - Non Linear Complex Systems Laboratory. More information can be found [here](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) and can be downloade [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 
 # Study Design
 
-Since the raw data used was previously collected, please refer to: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+Since the raw data used was previously collected, please refer [here](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 
 # Code Book
   data Data Set: 
