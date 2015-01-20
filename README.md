@@ -9,9 +9,9 @@ Here are the steps to properly execute run_analysis.R script.
 5. The script will now do it's magic 
   * Download needed data ZIP file.
   * Join test and train data provided by the files downloaded.
-	* Discard unnecessary data collected.
-	* Rename original columns to improve readability.
-	* Put data scattered throught out downloaded files into a single data table.
+  * Discard unnecessary data collected.
+  * Rename original columns to improve readability.
+  * Put data scattered throught out downloaded files into a single data table.
 6. And provide the following:
   * features_avg_groupedby_subject_activity.txt : data containing the average measurement of Means and Standard Deviation grouped by Subject and Activity.
 7. Resulting data tables, data (10299 observations of 68 variables) and features_avg_groupedby_subject_activity (180 observations of 68 variables) will remain in memory for further usage if necessary.
