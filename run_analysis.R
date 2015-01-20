@@ -9,23 +9,18 @@ if(nrow(pkgs[(pkgs$Package=="sqldf" & pkgs$Version == "0.4-10"),]) == 0){
 # Load needed packages
 library("data.table","1.9.4")
 library("sqldf","0.4-10")
-FEATURES_FILE <- "UCI HAR Dataset/features.txt"
-ACTIVITY_LABELS_FILE <- "UCI HAR Dataset/activity_labels.txt"
-TEST_DATA_FILE <- "UCI HAR Dataset/test/X_test.txt"
-TEST_LABELS_FILE <- "UCI HAR Dataset/test/y_test.txt"
-TEST_SUBJECTS_FILE <- "UCI HAR Dataset/test/subject_test.txt"
-TRAIN_DATA_FILE <- "UCI HAR Dataset/train/X_train.txt"
-TRAIN_LABELS_FILE <- "UCI HAR Dataset/train/y_train.txt"
-TRAIN_SUBJECTS_FILE <- "UCI HAR Dataset/train/subject_train.txt"
-
-# check for files needed existance
-FILE_STATUSES <- file.exists(c(FEATURES_FILE,ACTIVITY_LABELS_FILE,TEST_DATA_FILE,TEST_LABELS_FILE,TEST_SUBJECTS_FILE,TRAIN_DATA_FILE,TRAIN_LABELS_FILE,TRAIN_SUBJECTS_FILE))
-if(FALSE %in% FILE_STATUSES) {
-  rm(TRAIN_SUBJECTS_FILE,TRAIN_LABELS_FILE,TRAIN_DATA_FILE)
-  rm(TEST_SUBJECTS_FILE,TEST_LABELS_FILE,TEST_DATA_FILE)
-  rm(FILE_STATUSES)
-  stop("One or more needed file is missing \n Please, make sure to download the zip at \n https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip \n and expanded it in the working directory \n Then run me again :)")
-}
+# Downloads the ZIP file
+temp <- tempfile()
+download.file("http://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",temp)
+# Files to Extract 
+FEATURES_FILE <- unz(temp, "UCI HAR Dataset/features.txt")
+ACTIVITY_LABELS_FILE <- unz(temp, "UCI HAR Dataset/activity_labels.txt")
+TEST_DATA_FILE <- unz(temp, "UCI HAR Dataset/test/X_test.txt")
+TEST_LABELS_FILE <- unz(temp, "UCI HAR Dataset/test/y_test.txt")
+TEST_SUBJECTS_FILE <- unz(temp, "UCI HAR Dataset/test/subject_test.txt")
+TRAIN_DATA_FILE <- unz(temp, "UCI HAR Dataset/train/X_train.txt")
+TRAIN_LABELS_FILE <- unz(temp, "UCI HAR Dataset/train/y_train.txt")
+TRAIN_SUBJECTS_FILE <- unz(temp, "UCI HAR Dataset/train/subject_train.txt")
 # read features file
 features_list <- read.table(FEATURES_FILE)
 # read activity labels file
@@ -46,7 +41,9 @@ merged_subject <- rbind(test_subject,train_subject)
 rm(test_data,train_data,test_labels,train_labels,test_subject,train_subject,pkgs)
 rm(TRAIN_SUBJECTS_FILE,TRAIN_LABELS_FILE,TRAIN_DATA_FILE)
 rm(TEST_SUBJECTS_FILE,TEST_LABELS_FILE,TEST_DATA_FILE)
-rm(FILE_STATUSES,ACTIVITY_LABELS_FILE,FEATURES_FILE)
+rm(ACTIVITY_LABELS_FILE,FEATURES_FILE)
+unlink(temp)
+rm(temp)
 # naming the columns on data
 colnames(merged_data)<- features_list[,2]
 # finding which data "columns" have mean and std vars

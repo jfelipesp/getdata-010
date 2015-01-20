@@ -7,13 +7,13 @@ and can be downloade here: https://d396qusza40orc.cloudfront.net/getdata%2Fproje
 
 # Study Design
 
-Since the raw data was previously collected, please refer to: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+Since the raw data used was previously collected, please refer to: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 # Code Book
   data Data Set: 
-   - Subject: Subject identifier
-   - Activity: Activity performed while collecting data
-   - Means and Standard Deviations from triaxial(X, Y and Z) measurements from  accelerometer and Gyroscope.(more detailed info can be found at features_info.txt within the ZIP file you downloaded)
+   - Subject: An identifier of the subject who carried out the experiment.
+   - Activity: Its activity label.
+   - A 66-feature vector with time and frequency domain variables.
 
   vars_avg_groupedby_subject_activity Data Set: 
 	 - Subject: subjects identifier
